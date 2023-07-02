@@ -1,4 +1,6 @@
 main_url = "https://meroshare.cdsc.com.np/#/login"
+dashboard = "https://meroshare.cdsc.com.np/#/dashboard"
+asba = "https://meroshare.cdsc.com.np/#/asba"
 
 branch_selection_name = "selectBranch"
 bank_selection_class = "select2-search__field"
