@@ -39,8 +39,8 @@ def go_to_asba():
 
     # Driver.wait.until(Ec.presence_of_element_located((By.TAG_NAME,"app-dashboard")))
     Driver.wait.until(Ec.url_to_be(dashboard))
-    Driver.wait.until(Ec.presence_of_element_located((By.XPATH,'//span[normalize-space()="My ASBA"]')))
-    Driver.driver.find_element(By.XPATH,"//span[normalize-space()='My ASBA']").click()
+    Driver.wait.until(Ec.presence_of_element_located((By.XPATH,asba_path)))
+    Driver.driver.find_element(By.XPATH,asba_path).click()
     Driver.wait.until(Ec.url_to_be(asba))
     time.sleep(5)
 

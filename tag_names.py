@@ -11,3 +11,6 @@ password_name = "password"
 sign_in_class = 'sign-in'
 
 full_name_class = "user-profile-name"
+
+
+asba_path = '//span[normalize-space()="My ASBA"]'
