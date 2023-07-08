@@ -16,6 +16,7 @@ try:
             print("Login Error")
 
     go_to_asba()
+    ipo_list()
 
 except Exception as e:
     print(e)

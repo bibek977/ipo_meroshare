@@ -10,6 +10,7 @@ from tag_names import *
 
 import time
 
+
 class Driver:
     driver = webdriver.Chrome(service = ChromeService(ChromeDriverManager().install()))
     driver.maximize_window()
@@ -32,7 +33,7 @@ def logIn(username,password,bank_name):
 
     Driver.driver.find_element(By.CLASS_NAME,sign_in_class).click()
 
-    time.sleep(5)
+    time.sleep(3)
 
 
 def go_to_asba():
@@ -42,7 +43,31 @@ def go_to_asba():
     Driver.wait.until(Ec.presence_of_element_located((By.XPATH,asba_path)))
     Driver.driver.find_element(By.XPATH,asba_path).click()
     Driver.wait.until(Ec.url_to_be(asba))
-    time.sleep(5)
+    time.sleep(3)
+
+
+def ipo_list():
+
+    Driver.wait.until(Ec.presence_of_all_elements_located((By.CLASS_NAME,"company-list")))
+    company_list = Driver.driver.find_elements(By.CLASS_NAME,"company-list")
+    total_ipo = 0
+    for i in company_list:
+        Driver.wait.until(Ec.presence_of_element_located((By.CLASS_NAME,"company-name")))
+        company_name = i.find_element(By.CLASS_NAME,"company-name")
+        share_type = i.find_element(By.CLASS_NAME,"isin")
+        print(f"company name : {company_name.text} \n share-type : {share_type}")
+        total_ipo += 1
+
+
+
+    for j in range(total_ipo):
+        apply_btn = Driver.driver.find_element(By.XPATH,'//*[@id="main"]/div/app-asba/div/div[2]/app-applicable-issue/div/div/div/div/div[' + str(j+1) +']/div/div[2]/div/div[4]/button')
+        apply_btn.click()
+        time.sleep(3)
+
+        cancel_btn = Driver.driver.find_element(By.CLASS_NAME,"back-button-block")
+        cancel_btn.click()
+        time.sleep(3)
 
 def quit_app():
     Driver.driver.quit()
